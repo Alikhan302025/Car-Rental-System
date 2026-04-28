@@ -1,15 +1,19 @@
+import os
 import asyncpg
-from config import DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, DB_PORT
+from dotenv import load_dotenv
+
+load_dotenv()
 
 async def connect_db():
     try:
         return await asyncpg.connect(
-            user=DB_USER,
-            password=DB_PASSWORD,
-            database=DB_NAME,
-            host=DB_HOST,
-            port=DB_PORT
+            host=os.getenv("DB_HOST"),
+            port=int(os.getenv("DB_PORT", 5432)),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_NAME"),
+            ssl="require"
         )
     except Exception as e:
-        print("Database connection error:", e)
+        print("DB ERROR:", e)
         return None
