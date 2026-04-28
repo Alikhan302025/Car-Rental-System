@@ -3,3 +3,6 @@
 git add .
 git commit -m "add project structure"
 git push
+
+если файл .env добавится сразу 
+git reset .env
