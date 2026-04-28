@@ -1,0 +1,5 @@
+если рабоатешь через вс код в терминале что бы в гит хаб закинуть 
+
+git add .
+git commit -m "add project structure"
+git push
