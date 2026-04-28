@@ -228,4 +228,8 @@ async def report_damage_get_description(message: Message, state: FSMContext):
     telegram_id=message.from_user.id,
     details=result_message
 )
+@router.message(F.photo)
+async def photo_handler(message: Message):
+    await message.answer("Nice photo! But this bot works with car rentals 😊")
+
     await state.clear()
