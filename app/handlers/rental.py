@@ -1,4 +1,5 @@
 from datetime import datetime
+from app.services.log_service import write_log
 
 from aiogram import Router, F
 from aiogram.types import Message
@@ -135,6 +136,12 @@ async def rent_car_get_end_date(message: Message, state: FSMContext):
 
     await message.answer(result_message)
 
+    write_log(
+    action="create_rental",
+    telegram_id=message.from_user.id,
+    details=result_message
+)
+
     await state.clear()
 
 
@@ -162,6 +169,11 @@ async def return_car_get_rental_id(message: Message, state: FSMContext):
     )
 
     await message.answer(result_message)
+    write_log(
+    action="return_car",
+    telegram_id=message.from_user.id,
+    details=result_message
+)
     await state.clear()
 
 
@@ -211,4 +223,9 @@ async def report_damage_get_description(message: Message, state: FSMContext):
     )
 
     await message.answer(result_message)
+    write_log(
+    action="report_damage",
+    telegram_id=message.from_user.id,
+    details=result_message
+)
     await state.clear()

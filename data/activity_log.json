@@ -1,0 +1,14 @@
+[
+    {
+        "time": "2026-04-28T20:46:42",
+        "action": "return_car",
+        "telegram_id": 1240996006,
+        "details": "Rental with this ID was not found in your rentals."
+    },
+    {
+        "time": "2026-04-28T20:47:21",
+        "action": "report_damage",
+        "telegram_id": 1240996006,
+        "details": "Damage report created successfully!\n\nReport ID: 8\nRental ID: 15\nCar: Toyota Camry\nDescription: авария\nRepair cost: 0 KZT"
+    }
+]
