@@ -10,5 +10,17 @@
         "action": "report_damage",
         "telegram_id": 1240996006,
         "details": "Damage report created successfully!\n\nReport ID: 8\nRental ID: 15\nCar: Toyota Camry\nDescription: авария\nRepair cost: 0 KZT"
+    },
+    {
+        "time": "2026-05-13T13:46:43",
+        "action": "create_rental",
+        "telegram_id": 6206443154,
+        "details": "Rental created successfully!\n\nRental ID: 19\nCar: Toyota Camry (2020)\nStart date: 2026-05-13\nEnd date: 2026-05-23\nDays: 10\nTotal price: 250000 KZT"
+    },
+    {
+        "time": "2026-05-13T13:47:59",
+        "action": "return_car",
+        "telegram_id": 6206443154,
+        "details": "Car returned successfully!\n\nRental ID: 18\nCar: Toyota Camry\nStatus: completed"
     }
 ]

@@ -229,7 +229,6 @@ async def report_damage_get_description(message: Message, state: FSMContext):
     details=result_message
 )
 @router.message(F.photo)
-async def photo_handler(message: Message):
+async def photo_handler(message: Message, state: FSMContext):
     await message.answer("Nice photo! But this bot works with car rentals 😊")
-
     await state.clear()
