@@ -81,7 +81,8 @@ python bot.py
 
 <img width="1918" height="1351" alt="image" src="https://github.com/user-attachments/assets/cd02d43b-9c93-42d8-8364-d29136fd8c55" />
 <img width="314" height="814" alt="image" src="https://github.com/user-attachments/assets/da896f2b-f2a6-486e-bda3-da8fe28edc9f" />
-<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/d47a3dc2-bedc-4581-9ca6-4205fc343354" />
+<img width="2248" height="794" alt="image" src="https://github.com/user-attachments/assets/4d639458-d514-4013-afd9-cca4151ab23a" />
+
 
 ---
 
