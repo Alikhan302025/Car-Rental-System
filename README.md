@@ -79,15 +79,8 @@ python bot.py
 
 ## Telegram Bot Interface
 
-ADD SCREENSHOT HERE
-
-## Database Tables
-
-ADD SCREENSHOT HERE
-
-## Rental Process Example
-
-ADD SCREENSHOT HERE
+<img width="1918" height="1351" alt="image" src="https://github.com/user-attachments/assets/cd02d43b-9c93-42d8-8364-d29136fd8c55" />
+<img width="314" height="814" alt="image" src="https://github.com/user-attachments/assets/da896f2b-f2a6-486e-bda3-da8fe28edc9f" />
 
 ---
 
