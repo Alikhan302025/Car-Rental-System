@@ -15,6 +15,19 @@ main_menu = ReplyKeyboardMarkup(
             KeyboardButton(text="🛠 Report damage"),
             KeyboardButton(text="ℹ️ Help"),
         ],
+        [
+            KeyboardButton(text="🤖 AI Assistant"),
+        ],
+    ],
+    resize_keyboard=True
+)
+
+
+ai_menu = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="⬅️ Back to menu"),
+        ],
     ],
     resize_keyboard=True
 )

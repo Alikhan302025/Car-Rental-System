@@ -5,6 +5,8 @@ from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+from app.services.ai_service import ask_gemini
+from app.keyboards import main_menu, ai_menu
 
 from app.services.rental_service import (
     get_user_rentals,
@@ -23,6 +25,7 @@ class RentCarStates(StatesGroup):
     waiting_for_return_rental_id = State()
     waiting_for_damage_rental_id = State()
     waiting_for_damage_description = State()
+    waiting_for_ai_question = State()
 
 
 @router.message(F.text == "ℹ️ Help")
@@ -237,3 +240,27 @@ async def photo_handler(message: Message, state: FSMContext):
     await message.answer("Nice photo! But this bot works with car rentals 😊")
     await state.clear()
 
+@router.message(F.text == "🤖 AI Assistant")
+async def ai_assistant_start(message: Message, state: FSMContext):
+    await message.answer(
+        "🤖 AI Assistant is ready!\n\n"
+        "Ask me anything about using this car rental bot.\n"
+        "Example: How can I rent a car?"
+    )
+    await state.set_state(RentCarStates.waiting_for_ai_question)
+
+
+@router.message(RentCarStates.waiting_for_ai_question)
+async def ai_assistant_answer(message: Message, state: FSMContext):
+    if message.text == "⬅️ Back to menu":
+        await message.answer(
+            "Main menu opened.",
+            reply_markup=main_menu
+        )
+        await state.clear()
+        return
+
+    answer = await ask_gemini(message.text)
+    answer = answer[:3500]
+
+    await message.answer(f"🤖 {answer}")
