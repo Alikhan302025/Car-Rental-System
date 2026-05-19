@@ -25,22 +25,22 @@ class RentCarStates(StatesGroup):
     waiting_for_damage_description = State()
 
 
-@router.message(F.text == "Help")
+@router.message(F.text == "ℹ️ Help")
 async def help_handler(message: Message):
     await message.answer(
-        "Welcome to KazAvto Rental Bot!\n\n"
-        "Available cars - shows cars that are free now.\n"
-        "Rent car - allows you to rent a car by car ID.\n"
-        "My rentals - shows your active and completed rentals.\n"
-        "Return car - allows you to return a rented car.\n"
-        "Report damage - allows you to report car damage.\n"
-        "Help - shows this instruction."
-    )
+    "🚘 Welcome to KazAvto Rental Bot!\n\n"
+    "🚗 Available cars - shows cars that are free now.\n"
+    "📅 Rent car - allows you to rent a car by car ID.\n"
+    "📋 My rentals - shows your active and completed rentals.\n"
+    "🔁 Return car - allows you to return a rented car.\n"
+    "🛠 Report damage - allows you to report car damage.\n"
+    "ℹ️ Help - shows this instruction."
+)
 
 
-@router.message(F.text == "My rentals")
+@router.message(F.text == "ℹ️ Help")
 async def my_rentals_handler(message: Message):
-    rentals = await get_user_rentals(message.from_user.id)
+    rentals = await get_user_rentals(message.from_user.id)  
 
     if not rentals:
         await message.answer(
@@ -65,8 +65,7 @@ async def my_rentals_handler(message: Message):
 
     await message.answer(text)
 
-
-@router.message(F.text == "Rent car")
+@router.message(F.text == "📅 Rent car")
 async def rent_car_start(message: Message, state: FSMContext):
     await message.answer(
         "Please enter the car ID you want to rent.\n\n"
@@ -145,7 +144,7 @@ async def rent_car_get_end_date(message: Message, state: FSMContext):
     await state.clear()
 
 
-@router.message(F.text == "Return car")
+@router.message(F.text == "🔁 Return car")
 async def return_car_handler(message: Message, state: FSMContext):
     await message.answer(
         "Please enter the Rental ID you want to return.\n\n"
@@ -177,7 +176,7 @@ async def return_car_get_rental_id(message: Message, state: FSMContext):
     await state.clear()
 
 
-@router.message(F.text == "Report damage")
+@router.message(F.text == "🛠 Report damage")
 async def report_damage_handler(message: Message, state: FSMContext):
     await message.answer(
         "Please enter the Rental ID for the damage report.\n\n"
@@ -223,12 +222,22 @@ async def report_damage_get_description(message: Message, state: FSMContext):
     )
 
     await message.answer(result_message)
+
     write_log(
-    action="report_damage",
-    telegram_id=message.from_user.id,
-    details=result_message
-)
+        action="report_damage",
+        telegram_id=message.from_user.id,
+        details=result_message
+    )
+
+    await state.clear()
+
+
 @router.message(F.photo)
+<<<<<<< HEAD
 async def photo_handler(message: Message, state: FSMContext):
     await message.answer("Nice photo! But this bot works with car rentals 😊")
     await state.clear()
+=======
+async def photo_handler(message: Message):
+    await message.answer("Nice photo! But this bot works with car rentals 😊")
+>>>>>>> 5d6e036 (Improve дизаин with emojis and photo handler)
