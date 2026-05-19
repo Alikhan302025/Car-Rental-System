@@ -1,10 +1,11 @@
 from aiogram import Router, types
+
 from app.services.car_service import get_available_cars
 
 router = Router()
 
 
-@router.message(lambda message: message.text == "Available cars")
+@router.message(lambda message: message.text in ["Available cars", "🚗 Available cars", " Available cars"])
 async def show_cars(message: types.Message):
     print("BUTTON WORKS: Available cars clicked")
 
@@ -15,14 +16,14 @@ async def show_cars(message: types.Message):
         await message.answer("No available cars right now.")
         return
 
-    text = "Available cars:\n\n"
+    text = "🚗 Available cars:\n\n"
 
     for car in cars:
         text += (
             f"ID: {car['car_id']}\n"
-            f"{car['brand']} {car['model']} ({car['year']})\n"
-            f"Price: {car['daily_price']} ₸ / day\n"
-            f"Branch: {car['city']}, {car['address']}\n\n"
+            f"🚘 {car['brand']} {car['model']} ({car['year']})\n"
+            f"💰 Price: {car['daily_price']} ₸ / day\n"
+            f"📍 Branch: {car['city']}, {car['address']}\n\n"
         )
 
     await message.answer(text)

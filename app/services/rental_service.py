@@ -107,7 +107,7 @@ async def create_rental(user, car_id: int, start_date, end_date):
         total_price = days * car["daily_price"]
 
         message = (
-            "Rental created successfully!\n\n"
+            "✅ Rental created successfully!\n\n"
             f"Rental ID: {rental['rental_id']}\n"
             f"Car: {car['brand']} {car['model']} ({car['year']})\n"
             f"Start date: {start_date}\n"
@@ -120,7 +120,7 @@ async def create_rental(user, car_id: int, start_date, end_date):
 
     except Exception as e:
         print("Create rental error:", e)
-        return False, "Error while creating rental."
+        return False, "❌ Error while creating rental."
 async def return_rental(telegram_id: int, rental_id: int):
     """
     Completes an active rental of a Telegram user.
@@ -165,7 +165,7 @@ async def return_rental(telegram_id: int, rental_id: int):
         )
 
         message = (
-            "Car returned successfully!\n\n"
+            "✅ Car returned successfully!\n\n"
             f"Rental ID: {rental['rental_id']}\n"
             f"Car: {rental['brand']} {rental['model']}\n"
             "Status: completed"
@@ -175,7 +175,7 @@ async def return_rental(telegram_id: int, rental_id: int):
 
     except Exception as e:
         print("Return rental error:", e)
-        return False, "Error while returning the car."
+        return False, "❌ Error while returning the car."
 async def create_damage_report(telegram_id: int, rental_id: int, description: str):
     """
     Creates a damage report for a rental that belongs to the Telegram user.
@@ -203,7 +203,7 @@ async def create_damage_report(telegram_id: int, rental_id: int, description: st
         )
 
         if not rental:
-            return False, "Rental with this ID was not found in your rentals."
+            return False, "❌ Rental with this ID was not found in your rentals."
 
         report = await conn.fetchrow(
             """
@@ -221,7 +221,7 @@ async def create_damage_report(telegram_id: int, rental_id: int, description: st
         )
 
         message = (
-            "Damage report created successfully!\n\n"
+            "✅ Damage report created successfully!\n\n"
             f"Report ID: {report['report_id']}\n"
             f"Rental ID: {rental['rental_id']}\n"
             f"Car: {rental['brand']} {rental['model']}\n"
@@ -233,7 +233,7 @@ async def create_damage_report(telegram_id: int, rental_id: int, description: st
 
     except Exception as e:
         print("Create damage report error:", e)
-        return False, "Error while creating damage report."
+        return False, "❌ Error while creating damage report."
 
     finally:
         await conn.close()

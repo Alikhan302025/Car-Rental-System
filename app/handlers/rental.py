@@ -38,7 +38,7 @@ async def help_handler(message: Message):
 )
 
 
-@router.message(F.text == "ℹ️ Help")
+@router.message(F.text == "📋 My rentals")
 async def my_rentals_handler(message: Message):
     rentals = await get_user_rentals(message.from_user.id)  
 
@@ -233,11 +233,7 @@ async def report_damage_get_description(message: Message, state: FSMContext):
 
 
 @router.message(F.photo)
-<<<<<<< HEAD
 async def photo_handler(message: Message, state: FSMContext):
     await message.answer("Nice photo! But this bot works with car rentals 😊")
     await state.clear()
-=======
-async def photo_handler(message: Message):
-    await message.answer("Nice photo! But this bot works with car rentals 😊")
->>>>>>> 5d6e036 (Improve дизаин with emojis and photo handler)
+
