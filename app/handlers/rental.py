@@ -36,6 +36,7 @@ async def help_handler(message: Message):
     "🛠 Report damage - allows you to report car damage.\n"
     "ℹ️ Help - shows this instruction."
 )
+    
 
 
 @router.message(F.text == "📋 My rentals")
